@@ -157,7 +157,7 @@ document.addEventListener('alpine:init', () => {
             {
                 id: 4,
                 name: 'Soto Sulung',
-                img: 'soto-sulung.png',
+                img: 'Soto-Sulung.png',
                 category: 'Weekly Request',
                 price: 150000,
             },
