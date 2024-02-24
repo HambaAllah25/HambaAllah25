@@ -251,6 +251,10 @@ button:active {
         font-size: 55%;
     }
 
+    body {
+    overflow-x: hidden;
+    }
+
     .scrollToTopBtn {
         padding: 1.5rem;
         bottom: 10px;
