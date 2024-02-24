@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/Components/Global/Global.css">
+    <link rel="stylesheet" href="../src/Components/CSS/style.css">
+
+    <!-- AlpineJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../src/Components/Assets/img/favicon.svg">
+
+    <title>NAKAMA & CO | Trusted Foods & Aquascape Decoration Site</title>
+</head>
+
+<body>
+    <div class="marquee announcement">
+        <div class="track">
+            <span>We only accept pre orders only.</span>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="../src/Components/Assets/img/feather-sprite.svg#zap" />
+            </svg>
+            <span>We will send orders on Saturdays and Sundays only.</span>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="../src/Components/Assets/img/feather-sprite.svg#zap" />
+            </svg>
+            <span>We only accept pre orders only.</span>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="../src/Components/Assets/img/feather-sprite.svg#zap" />
+            </svg>
+            <span>We will send orders on Saturdays and Sundays only.</span>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <use href="../src/Components/Assets/img/feather-sprite.svg#zap" />
+            </svg>
+        </div>
+    </div>
+    <!-- NAVBAR START -->
+    <header id="header" x-data>
+        <div class="container">
+            <div class="nav-menu">
+                <div class="hamburger" id="hamburger">
+                    <div class="hamburger-icon">
+                        <i data-feather="menu"></i>
+                    </div>
+                    <span>
+                        MENU
+                    </span>
+                </div>
+                <div class="call-centre">
+                    <span>need help?</span>
+                    <p>+62-812-1234-5678</p>
+                </div>
+            </div>
+            <a href="#" class="logo">
+                <span class="top-text">SINCE</span>
+                <img src="../src/Components/Assets/logo-title.svg" alt="" class="logo-title">
+                <span class="bottom-text">2022</span>
+            </a>
+            <div class="nav-extra">
+                <div class="search" id="search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-search">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+                <!-- <div class="whishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-heart">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                    <span>0</span>
+                </div> -->
+                <div class="search-container">
+                    <div class="head">
+                        <div class="wrapper">
+                            <svg class="search-close" id="search-close" width="24" height="24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="../src/Components/Assets/img/feather-sprite.svg#chevrons-right" />
+                            </svg>
+                        </div>
+                        <h3 class="title">Search</h3>
+                    </div>
+                    <form>
+                        <input placeholder="Search for a product..." type="search" />
+                        <svg width="24" height="24" fill="none" stroke="#b1b1b1" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <use href="../src/Components/Assets/img/feather-sprite.svg#search" />
+                        </svg>
+                    </form>
+                    <span class="empty-result">
+                        Find your product with fast search. Enter some keyword such as prawn, decoration etc.
+                    </span>
+                </div>
+                <script>
+                    // NAVIGATION (HAMBURGER, CLOSE) FUNCTION ACTIVE
+                    const searchContainer = document.querySelector('.search-container');
+                    const searchClose = document.querySelector('#search-close');
+                    const search = document.querySelector('#search');
+
+                    // HAMBURGER ICON ON CLICK
+                    document.querySelector('#search').onclick = () => {
+                        searchContainer.classList.toggle('active');
+                    };
+
+                    // CLOSE FUNCTION
+                    document.querySelector('#search-close').onclick = () => {
+                        searchContainer.classList.remove('active');
+                    };
+
+                    // CLICK OUTSIDE
+                    document.addEventListener('click', function (e) {
+                        if (!search.contains(e.target) && !searchContainer.contains(e.target)) {
+                            searchContainer.classList.remove('active');
+                        }
+                    });
+                </script>
+                <div class="wrapper">
+                    <div class="total-price">
+                        <span x-text="rupiah($store.cart.total)"></span>
+                        <h4>CART</h4>
+                    </div>
+                    <div class="cart" id="cart">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <use href="../src/Components/Assets/img/feather-sprite.svg#shopping-bag" />
+                        </svg>
+                        <span class="quantity-notification" x-show="$store.cart.quantity"
+                            x-text="$store.cart.quantity"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- NAVBAR SHOW ONSCROLL SCRIPT -->
+            <script>
+                window.addEventListener('scroll', function () {
+                    var header = document.querySelector('header');
+                    var logo = document.querySelector('.logo');
+                    var logoTitle = document.querySelector('.logo-title');
+                    header.classList.toggle('active', window.scrollY > 0);
+                    logo.classList.toggle('active', window.scrollY > 0);
+                    logoTitle.classList.toggle('active', window.scrollY > 0);
+                })
+            </script>
+        </div>
+        <!-- MENU LINK START -->
+        <div class="menu-link">
+            <div class="container">
+                <div class="close" id="close">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <use href="../src/Components/Assets/img/feather-sprite.svg#chevrons-left" />
+                    </svg>
+                </div>
+                <div class="call-centre">
+                    <span>need help?</span>
+                    <p>+62-812-1234-5678</p>
+                </div>
+                <div class="search">
+                    <input type="search" placeholder="search for:">
+                    <i data-feather="search"></i>
+                </div>
+                <nav class="nav-link" id="navbar">
+                    <a href="./index.html" class="nav-item active">
+                        <span>Home</span>
+                        <i class="arrow-right" data-feather="chevron-right"></i>
+                    </a>
+                    <a href="./shop.html" class="nav-item">
+                        <span>Shop</span>
+                        <i class="arrow-right" data-feather="chevron-right"></i>
+                    </a>
+                    <a href="./about.html" class="nav-item">
+                        <span>About</span>
+                        <i class="arrow-right" data-feather="chevron-right"></i>
+                    </a>
+                    <a href="./contact.html" class="nav-item">
+                        <span>Contact</span>
+                    </a>
+                </nav>
+                <div class="horizontal-line"></div>
+                <!-- <a href="#" class="whishlist">
+                    <i data-feather="heart"></i>
+                    <span>Whishlist</span>
+                </a> -->
+                <a href="#" class="login-register">
+                    <svg width="25" height="25" fill="none" stroke="#b1b1b1" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <use href="../src/Components/Assets/img/feather-sprite.svg#user" />
+                    </svg>
+                    <span>Login/Register</span>
+                </a>
+                <div class="horizontal-line"></div>
+                <div class="social-links">
+                    <a href="#" class="social-item facebook">
+                        <i data-feather="facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/dapur.nakamaa/" class="social-item instagram" target="_blank">
+                        <i data-feather="instagram"></i>
+                    </a>
+                    <a href="#" class="social-item linkedin">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <script>
+                // NAVBAR LINK FUNCTION ACTIVE
+                var btnContainer = document.getElementById('navbar');
+                var btns = btnContainer.getElementsByClassName('nav-item');
+
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].addEventListener('click', function () {
+                        var current = document.getElementsByClassName('active');
+                        current[0].className = current[0].className.replace('active');
+                        this.className += ' active';
+                    })
+                }
+            </script>
+            <script>
+                // NAVIGATION (HAMBURGER, CLOSE) FUNCTION ACTIVE
+                const navbarNav = document.querySelector('.menu-link');
+                const hamburger = document.querySelector('#hamburger');
+                const close = document.querySelector('#close');
+
+                // HAMBURGER ICON ON CLICK
+                document.querySelector('#hamburger').onclick = () => {
+                    navbarNav.classList.toggle('active');
+                };
+
+                // CLOSE FUNCTION
+                document.querySelector('#close').onclick = () => {
+                    navbarNav.classList.remove('active');
+                };
+
+                // CLICK OUTSIDE
+                document.addEventListener('click', function (e) {
+                    if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+                        navbarNav.classList.remove('active');
+                    }
+                });
+            </script>
+        </div>
+        <!-- MENU LINK END -->
+
+        <!-- SHOPPING CART START -->
+        <section class="shopping-cart">
+            <main class="container">
+                <div class="header">
+                    <svg class="close" id="close-cart" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <use href="../src/Components/Assets/img/feather-sprite.svg#chevrons-right" />
+                    </svg>
+                    <h1 class="cart-title">CART</h1>
+                </div>
+                <div class="empty-product" x-show="!$store.cart.items.length">
+                    <svg width="200" height="200" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <use href="../src/Components/Assets/img/feather-sprite.svg#shopping-bag" />
+                    </svg>
+                    <h4>NO PRODUCTS IN THE CART.</h4>
+                </div>
+                <!-- PRODUCTS CART START -->
+                <div class="product-detail">
+                    <template x-for="(item, index) in $store.cart.items" x-key="index">
+                        <div class="cart-item">
+                            <img :src="`../src/Components/Assets/img/products/${item.img}`" :alt="item.name"
+                                draggable="false">
+                            <div class="item-detail">
+                                <h3 class="item-title" x-text="item.name"></h3>
+                                <div class="item-price">
+                                    <span x-text="rupiah(item.price)"></span> x
+                                    <button id="remove" @click="$store.cart.remove(item.id)">
+                                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <use href="../src/Components/Assets/img/feather-sprite.svg#minus" />
+                                        </svg>
+                                    </button>
+                                    <span x-text="item.quantity"></span>
+                                    <button id="add" @click="$store.cart.add(item)">
+                                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <use href="../src/Components/Assets/img/feather-sprite.svg#plus" />
+                                        </svg>
+                                    </button> =
+                                    <span x-text="rupiah(item.total)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <!-- PRODUCTS CART END -->
+                <div class="cart-total" x-show="$store.cart.items.length">
+                    <div class="total">
+                        <h4>Total:</h4>
+                        <span x-text="rupiah($store.cart.total)"></span>
+                    </div>
+                </div>
+
+                <!-- Form:Start -->
+                <div class="form-container" x-show="$store.cart.items.length">
+                    <form action="https://formspree.io/f/mzbngznv" method="POST" id="checkoutForm">
+                        <h5>Customer Detail</h5>
+
+                        <label for="name">
+                            <span>Name:</span>
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                        </label>
+
+                        <label for="email">
+                            <span>Email:</span>
+                            <input type="text" name="email" id="email" placeholder="Your Email Address" required>
+                        </label>
+
+                        <label for="phone">
+                            <span>Phone:</span>
+                            <input type="number" name="phone" id="phone" autocomplete="off"
+                                placeholder="Your Phone Number" required>
+                        </label>
+
+                        <label for="address">
+                            <span>Address:</span>
+                            <input type="text" name="address" id="address" autocomplete="off" placeholder="Your Address"
+                                required>
+                        </label>
+                        <span class="message">
+                            * Our team will immediately contact you to send questions such as proof of payment, address
+                            details, spices of choice, etc via email/whatsapp.
+                        </span>
+                        <div class="qris">
+                            <img src="../src/Components/Assets/img/products/shopeepay_dapur-nakama.jpg" alt="QRIS"
+                                draggable="false" loading="lazy">
+                            <span>* Please scan to start payment via QRIS(ShopeePay).
+                                <br>
+                                * You can also make payments via transfer to our BCA account: 4280078641.
+                                <br>
+                                * Save proof of payment for proof of payment which we will confirm to you via
+                                email/whatsapp.
+                            </span>
+                        </div>
+                        <div class="buttons" x-show="$store.cart.items.length">
+                            <!-- <a href="#" class="btn1">
+                                <span>View Cart</span>
+                            </a> -->
+                            <button class="checkout-button btn1" type="submit" id="checkout-button" value="checkout">
+                                Checkout
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Form:End -->
+            </main>
+            <script>
+                // NAVIGATION CART FUNCTION ACTIVE
+                const shoppingCart = document.querySelector('.shopping-cart');
+                document.querySelector('#cart').onclick = () => {
+                    shoppingCart.classList.toggle('active');
+                }
+                // CLOSE FUNCTION
+                document.querySelector('#close-cart').onclick = () => {
+                    shoppingCart.classList.remove('active');
+                };
+                // CLICK OUTSIDE
+                const cart = document.querySelector('#cart');
+                document.addEventListener('click', function (e) {
+                    if (!cart.contains(e.target) && !shoppingCart.contains(e.target)) {
+                        shoppingCart.classList.remove('active');
+                    }
+                });
+            </script>
+        </section>
+    </header>
+    <!-- NAVBAR END -->
+
+    <!-- About:Start -->
+    <main>
+        <section class="about_container">
+            <div class="image"></div>
+            <div class="container">
+                <div class="title__wrapper">
+                    <h1 class="number">01</h1>
+                    <h3 class="title">Our Story</h3>
+                </div>
+                <div class="desc">
+                    <span>Established in 2022, Nakama is a passionate Foods & Aquascape Decoration aiming to spread the
+                        love for Indonesian products as a local brand from Indonesia for our customer. As our name
+                        derived from the word NAKAMA, means colleague or comrade in arms.
+                    </span>
+                    <br>
+                    <br>
+                    <div class="sign">
+                        <img src="../src/Components/Assets/signature.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team_container" x-data="team">
+            <div class="container">
+
+                <div class="top">
+                    <h2 class="title">Meet Our Team</h2>
+                    <h4>The Right People For Your Project</h4>
+                </div>
+
+                <div class="bottom">
+                    <div class="team_list">
+                        <template x-for="(item, index) in items" x-key="index">
+                            <div class="team_item__card">
+                                <img :src="`../src/Components/Assets/img/avatar/${item.img}`" :alt="item.name"
+                                    loading="lazy" draggable="false">
+                                <div class="detail_wrapper">
+                                    <h3 class="name" x-text="item.name"></h3>
+                                    <div class="division" x-text="item.division"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="about_container">
+            <div class="container">
+                <div class="title__wrapper">
+                    <h1 class="number">02</h1>
+                    <h3 class="title">What We Do?</h3>
+                </div>
+                <div class="desc">
+                    <span>The idea for Nakama started because we had a mission to spread the love for Indonesian
+                        food as a local brand from Indonesia throughout the world. And we also have a hobby that we
+                        want to mix and match with our future Restaurant, in order to
+                        provide a lively sea feel, especially for Aquascape lovers.
+                        <br>
+                        <br>
+                        We start operations in 2022.
+                    </span>
+                </div>
+            </div>
+            <div class="image"></div>
+        </section>
+    </main>
+    <!-- About:End -->
+
+    <!-- FOOTER START -->
+    <footer>
+        <div class="container">
+            <div class="footer-item">
+                <div class="footer-title">Nakama's Shop</div>
+                <div class="footer-link-wrapper">
+                    <a href="./about.html" class="footer-link">About Us</a>
+                    <a href="./shop.html" class="footer-link">Browse Products</a>
+                    <div class="wrapper">
+                        <a href="#" class="footer-link not-allowed"><strike>Read Our Blog</strike></a>
+                        <span>coming soon</span>
+                    </div>
+                    <a href="./contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="footer-title">Category</div>
+                <div class="footer-link-wrapper">
+                    <a href="#" class="footer-link">Dapur Nakama</a>
+                    <a href="#" class="footer-link">N-Aquatics</a>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="footer-title">CUSTOMER CARE</div>
+                <div class="footer-link-wrapper">
+                    <div class="wrapper">
+                        <a href="#" class="footer-link not-allowed"><strike>Order Tracking</strike></a>
+                        <span>coming soon</span>
+                    </div>
+                    <div class="wrapper">
+                        <a href="#" class="footer-link not-allowed"><strike>The Privacy Policy</strike></a>
+                        <span>coming soon</span>
+                    </div>
+                    <div class="wrapper">
+                        <a href="#" class="footer-link not-allowed"><strike>Payments & Returns</strike></a>
+                        <span>coming soon</span>
+                    </div>
+                    <div class="wrapper">
+                        <a href="#" class="footer-link not-allowed"><strike>Product Care</strike></a>
+                        <span>coming soon</span>
+                    </div>
+                    <a href="#" class="footer-link">FAQ’s</a>
+                </div>
+            </div>
+            <div class="footer-item newsletter">
+                <!-- form email Newsletter start -->
+                <h4 class="title">NEWSLETTER</h4>
+                <span>Get instant updates about our new products and special promos!</span>
+                <form name="submit-to-google-sheet">
+                    <input type="email" name="email" placeholder="Your Email Address" required autocomplete="off">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+                <span id="message"></span>
+                <img src="../src/Components/Assets/Payment.jpg" alt="" draggable="false">
+                <!-- form email Newsletter end -->
+            </div>
+            <script>
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbwi3xHOyUXQSnb_xEe9Lav5Dh3kx3irswCub0ncmgpbBqy3PhprnNQTZwWegURkcANO/exec'
+                const form = document.forms['submit-to-google-sheet']
+                const msg = document.getElementById("message")
+
+                form.addEventListener('submit', e => {
+                    e.preventDefault()
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                        .then(response => {
+                            msg.innerHTML = "Thank you for subscribing!"
+                            setTimeout(function () {
+                                msg.innerHTML = ""
+                            }, 5000)
+                            form.reset()
+                        })
+                        .catch(error => console.error('Error!', error.message))
+                })
+            </script>
+        </div>
+        <div class="social">
+            <div class="social-wrapper">
+                <a href="">
+                    <i class="social-icon fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/dapur.nakamaa/" target="_blank">
+                    <img src="../src/Components/Assets/instagram-icon.jpg" alt="">
+                </a>
+                <a href="">
+                    <i class="social-icon fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 - NAKAMA. Created by <a href="#">Fathony Maulana</a>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- ====== SCROLL TO TOP BUTTON ====== -->
+    <button class="scrollToTopBtn"><i data-feather="chevron-up"></i></button>
+    <script>
+        var scrollToTopBtn = document.querySelector(".scrollToTopBtn")
+        var rootElement = document.documentElement
+
+        function handleScroll() {
+            // Do something on scroll - 0.15 is the percentage the page has to scroll before the button appears
+            // This can be changed - experiment
+            var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
+            if ((rootElement.scrollTop / scrollTotal) > 0) {
+                // Show button
+                scrollToTopBtn.classList.add("showBtn")
+            } else {
+                // Hide button
+                scrollToTopBtn.classList.remove("showBtn")
+            }
+        }
+
+        function scrollToTop() {
+            // Scroll to top logic
+            rootElement.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+        scrollToTopBtn.addEventListener("click", scrollToTop)
+        document.addEventListener("scroll", handleScroll)
+    </script>
+
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- App -->
+    <script src="../src/Components/JS/App.js"></script>
+
+    <!-- BOOTSTRAP 3 MULTIPLE ITEM SLIDER -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
