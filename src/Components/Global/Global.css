@@ -56,12 +56,13 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Oswald', sans-serif;
     max-width: 100%;
-    overflow-x: hidden;
+    
     background-color: var(--bg-color);
     color: var(--dark);
 }
